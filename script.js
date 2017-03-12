@@ -1,25 +1,27 @@
 function count (value, time, procent) {
-    var sum = value + (procent * value * time / 12 / 100) ;
+    var sum = value + ((procent / 12 / 1000 ) * value * time ) ;
     //procent jest rocznie
     //jeśli pożyczka to oblicz na początku
     var rate = sum / time;
     var returnOfInvestment = sum - value;
-    console.log('kwota pobrana ' + value + ' rata wynosi ' + rate + ' czas wynosi ' + time + ' całośc kredytu to ' + sum + 'zwrot z inwestycji to ' + returnOfInvestment);
+    var output =
+    console.log('value = ' + value + ' rate = ' + rate + ' time = ' + time + ' sum = ' + sum + ' zwrot z inwestycji to ' + returnOfInvestment + 'procent = ' + procent);
 }
 $(document).ready(function(){
     //event listeners
     $('#submit').on('click', function(){
-        var value = $('#value').val();
-        var procent = $('#procent').val();
-        var time = $('#time').val();
-        console.log();
+        var value = $('#value').val() * 1;
+        var procent = $('#procent').val() * 1;
+        var time = $('#time').val() * 1;
+        count(value,  time, procent);
+        $('#userInput').text(value);
     });
 });
 //pożyczka
 
 
 
-count(100000, 12, 15);
+
 
 
 
